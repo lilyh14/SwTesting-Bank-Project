@@ -1,0 +1,36 @@
+steps:
+# Build:
+  - id: 'clean install'
+    name: maven:3-jdk-9
+    entrypoint: mvn
+    dir: 'SWTestingTeam3'
+    args: ["clean", "install", "-Dmaven.test.skip=true"]
+  - id: 'build'
+    name: docker
+    dir: 'SWTestingTeam3'
+    args: ["build", "-t", "gcr.io/sw-testing-g3/app3", "."]
+  - id: 'push'
+    name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/sw-testing-g3/app3"]
+#REMOVABLE_START
+#Unit Tests:
+  - id: 'unit tests'
+    name: maven:3-jdk-9
+    entrypoint: mvn
+    dir: 'SWTestingTeam3'
+    args: ['"test"', '"-Dtest=SwTestingTeam3ApplicationTests"']
+#___
+#Integration Tests:
+  - id: 'integration tests'
+    name: maven:3-jdk-9
+    entrypoint: mvn
+    dir: 'SWTestingTeam3'
+    args: ['"test"', '"-Dtest=SwTestingTeam3AddRevokeTests,SwTestingTeam3AuthTests,SwTestingTeam3POSTTests"']
+#REMOVABLE_END
+# Deployment
+  - id: 'deploy'
+    name: 'gcr.io/cloud-builders/gcloud'
+    dir: 'SWTestingTeam3'
+    args: ['app', 'deploy']
+    timeout: "30m0s"
+    #testing continuous integration on GCloud

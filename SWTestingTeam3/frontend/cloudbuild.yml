@@ -1,0 +1,43 @@
+steps:
+  # Build:
+  #  - id: 'clean install'
+  #    name: maven:3-jdk-9
+  #    entrypoint: mvn
+  #    dir: 'SWTestingTeam3\frontend'
+  #    args: ["clean", "install", "-Dmaven.test.skip=true"]
+  - id: 'build'
+    name: docker
+    dir: 'SWTestingTeam3/frontend'
+    args: ["build", "-t", "gcr.io/sw-testing-bobs-g3/app3", "."]
+  - id: 'push'
+    name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/sw-testing-bobs-g3/app3"]
+
+  # - id: Install Dependencies
+  #   name: node
+  #   entrypoint: npm
+  #   args: ['install']
+  #   env:
+  #       - 'CYPRESS_CACHE_FOLDER=/e2e/.tmp/Cypress/3.2.0/Cypress/Cypress'
+  # #E2E Tests
+  # - id: Run E2Es
+  #   name: docker
+  #   args:
+  #     [
+  #         'run',
+  #         '--workdir',
+  #         '/e2e',
+  #         '--volume',
+  #         '/workspace:/e2e',
+  #         '--env',
+  #         'CYPRESS_CACHE_FOLDER=/e2e/.tmp/Cypress/3.2.0/Cypress/Cypress',
+  #         '--ipc',
+  #         'host',
+  #         'cypress/included:3.2.0'
+  #     ]
+  # Deployment
+  - id: 'deploy'
+    name: 'gcr.io/cloud-builders/gcloud'
+    dir: 'SWTestingTeam3'
+    args: ['app', 'deploy']
+    timeout: "30m0s" 

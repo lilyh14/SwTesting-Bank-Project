@@ -1,0 +1,7 @@
+#Unit Tests:
+  - id: 'unit tests'
+    name: maven:3-jdk-9
+    entrypoint: mvn
+    dir: 'SWTestingTeam3'
+    args: ['"test"', '"-Dtest=SwTestingTeam3ApplicationTests"']
+#___

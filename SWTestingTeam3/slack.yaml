@@ -1,0 +1,13 @@
+apiVersion: cloud-build-notifiers/v1
+kind: SlackNotifier
+metadata:
+  name: slack-notifier
+spec:
+  notification:
+    filter: build.status == Build.Status.SUCCESS
+    delivery:
+      webhookUrl:
+        secretRef: webhook-url
+  secrets:
+  - name: webhook-url
+    value: projects/sw-testing-g3/secrets/slack_notification_webhook/versions/latest

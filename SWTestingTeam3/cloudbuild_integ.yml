@@ -1,0 +1,6 @@
+#Integration Tests:
+  - id: 'integration tests'
+    name: maven:3-jdk-9
+    entrypoint: mvn
+    dir: 'SWTestingTeam3'
+    args: ['"test"', '"-Dtest=SwTestingTeam3AddRevokeTests,SwTestingTeam3AuthTests,SwTestingTeam3POSTTests"']
