@@ -1,4 +1,8 @@
-# Professional Practice Assignment 1 - Team 3
+# Software Testing for Continuous Delivery
+This is the semester course project for the course CIS4930. Feel free to look at the report folder for more explanation and demos.
+
+
+## Professional Practice Assignment 1 - Team 3
 
 ### Docker Instructions
 To execute PPA2 application:
@@ -25,14 +29,17 @@ To execute PP1 application:
 - then type `java PP1program`
 - To exit, type `exit`
 
-# Professional Practice Assignment 2 - Team 3
+## Professional Practice Assignment 2 - Team 3
 Link to deployed Google App Engine:
 https://sw-testing-g3.uc.r.appspot.com/
 
-# Professional Practice Assignment 4 - Team 3
+## Professional Practice Assignment 4 - Team 3
 Link to deployed Google App Engine:
 https://cloud-challenge-nyccgtirxq-uc.a.run.app
 
 ## Admin Logs Interface
 
 To log in as the admin user, use email: `admin@test.com` and password: `adminadmin`
+
+
+***Please note: We do not guanatee that the deployed links will stay live or function 100% after the completion of the course***
